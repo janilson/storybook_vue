@@ -1,0 +1,20 @@
+# Development files
+.nuxt/
+.storybook/
+stories/
+node_modules/
+.vscode/
+.idea/
+
+# Build artifacts (keep dist/ for published package)
+# dist/ is needed for the package to work
+
+# Config files
+*.log
+.DS_Store
+coverage/
+.vitest/
+
+# Source files (only dist/ is needed)
+# src/ is kept for type definitions
+

@@ -21,6 +21,16 @@ export default {
   theme: {
     extend: {
       colors,
+      fontFamily: {
+        poppins: ["'Poppins', sans-serif"],
+        inter: ["'Inter', sans-serif"],
+      },
+      screens: {
+        xl: { max: "1500px" },
+        lg: { max: "1440px" },
+        md: { max: "1180px" },
+        sm: { max: "640px" },
+      },
     },
   },
 

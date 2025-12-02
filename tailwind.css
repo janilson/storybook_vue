@@ -1,3 +1,82 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  /* Title Typography */
+  .title {
+    white-space: pre-line;
+    font-family: theme("fontFamily.poppins");
+    font-weight: 600;
+  }
+
+  /* Title - Extra Large (XL) */
+  .title.extra-large {
+    font-size: 2rem; /* 32px */
+    line-height: 2.375rem; /* 38px */
+  }
+
+  @media (max-width: 640px) {
+    .title.extra-large {
+      font-size: 1.5rem; /* 24px */
+      line-height: 1.75rem; /* 28px */
+    }
+  }
+
+  /* Title - Large (LG) */
+  .title.large {
+    font-size: 1.5rem; /* 24px */
+    line-height: 1.875rem; /* 30px */
+  }
+
+  @media (max-width: 640px) {
+    .title.large {
+      font-size: 1.375rem; /* 22px */
+      line-height: 1.5rem; /* 24px */
+    }
+  }
+
+  /* Title - Medium (MD) */
+  .title.medium {
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.5rem; /* 24px */
+  }
+
+  /* Title - Small (SM) */
+  .title.small {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+
+  /* Body Typography */
+  .body {
+    white-space: pre-line;
+    font-family: theme("fontFamily.inter");
+    font-weight: 500;
+  }
+
+  /* Body - Large (LG) */
+  .body.large {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.75rem; /* 28px */
+    height: 24px;
+  }
+
+  /* Body - Medium (MD) */
+  .body.medium {
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; /* 24px */
+  }
+
+  /* Body - Small (SM) */
+  .body.small {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+
+  /* Body - Extra Small (XS) */
+  .body.extra-small {
+    font-size: 0.75rem; /* 12px */
+    line-height: 1rem; /* 16px */
+  }
+}

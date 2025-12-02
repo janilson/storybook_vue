@@ -1,5 +1,27 @@
 import vue from "@vitejs/plugin-vue";
 import type { StorybookConfig } from "@storybook/vue3-vite";
+import type { Plugin } from "vite";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const normalizeFileImports = (): Plugin => {
+  return {
+    name: "normalize-file-imports",
+    enforce: "pre",
+    resolveId(id, importer) {
+      if (id.startsWith("file://")) {
+        try {
+          const filePath = fileURLToPath(id);
+          return filePath;
+        } catch {
+          const normalized = id.replace(/^file:\/\/+/, "");
+          return normalized.startsWith("/") ? normalized : path.resolve(process.cwd(), normalized);
+        }
+      }
+      return null;
+    },
+  };
+};
 
 const config: StorybookConfig = {
   stories: [
@@ -28,7 +50,19 @@ const config: StorybookConfig = {
 
   viteFinal: async (config) => {
     config.plugins = config.plugins || [];
+    
+    config.plugins.unshift(normalizeFileImports());
     config.plugins.push(vue());
+    
+    if (!config.resolve) {
+      config.resolve = {};
+    }
+    
+    config.resolve.dedupe = config.resolve.dedupe || [];
+    if (!config.resolve.dedupe.includes("@storybook/addon-docs")) {
+      config.resolve.dedupe.push("@storybook/addon-docs");
+    }
+    
     return config;
   },
 };

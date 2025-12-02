@@ -1,13 +1,48 @@
 {
   "name": "ecosys-design-system",
+  "version": "0.1.6",
   "type": "module",
-  "private": true,
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecosysauto/ecosys-ui.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/ecosys-ui.cjs.js",
+  "module": "./dist/ecosys-ui.es.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/ecosys-ui.es.js",
+      "require": "./dist/ecosys-ui.cjs.js"
+    },
+    "./tailwind.css": "./dist/tailwind.css"
+  },
+  "files": [
+    "dist",
+    "tailwind.css",
+    "src"
+  ],
+  "sideEffects": [
+    "./dist/tailwind.css"
+  ],
   "scripts": {
     "build": "nuxt build",
+    "build:lib": "vite build -c vite.library.config.ts",
+    "build:css": "npx tailwindcss -c tailwind.config.js -i ./tailwind.css -o ./dist/tailwind.css --minify",
+    "build:package": "npm run clean && npm run build:types && npm run build:lib && npm run build:css",
+    "build:types": "vue-tsc --project tsconfig.lib.json",
+    "clean": "rm -rf dist",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "pack": "npm run build:package && npm pack",
+    "prepublishOnly": "npm run build:package",
+    "release": "npm run build:package",
+    "prepare": "nuxt prepare",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -15,20 +50,32 @@
     "@nuxtjs/tailwindcss": "^6.14.0",
     "nuxt": "^4.2.1",
     "vue": "^3.5.24",
-    "vue-router": "^4.6.3"
+    "vue-router": "^4.6.3",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.2",
+    "@nuxtjs/tailwindcss": "^6.14.0",
     "@storybook/addon-a11y": "^10.0.6",
     "@storybook/addon-docs": "^10.0.6",
     "@storybook/addon-vitest": "^10.0.6",
     "@storybook/vue3-vite": "^10.0.6",
     "@tailwindcss/postcss": "^4.1.17",
+    "@types/node": "^22.10.1",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vitest/browser-playwright": "^4.0.8",
     "@vitest/coverage-v8": "^4.0.8",
+    "@vue/tsconfig": "^0.5.1",
+    "nuxt": "^4.2.1",
     "playwright": "^1.56.1",
+    "rimraf": "^6.0.1",
     "storybook": "^10.0.6",
-    "vitest": "^4.0.8"
+    "tailwindcss": "^3.4.18",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vitest": "^4.0.8",
+    "vue": "^3.5.24",
+    "vue-router": "^4.6.3",
+    "vue-tsc": "^2.1.6"
   }
 }

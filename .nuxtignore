@@ -1,0 +1,4 @@
+# Ignorar arquivos do Storybook
+.storybook/**
+stories/**
+

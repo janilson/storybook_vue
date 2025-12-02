@@ -1,0 +1,150 @@
+import type { PipelineColumnData } from "../types";
+
+const defaultOwners = [
+  { name: "João Paulo" },
+  { name: "Roberto Carlos" },
+];
+
+export const crmPipelineMock: PipelineColumnData[] = [
+  {
+    id: "stage-contact",
+    title: "Contato Inicial",
+    amount: "R$ 27.990,00",
+    leadsCount: 3,
+    leads: [
+      {
+        id: "lead-a",
+        name: "Lead Alpha",
+        owners: defaultOwners,
+        contactInfo: "00 90000-0000",
+        contactTone: "success",
+        statusLabel: "2 dias",
+        statusTone: "alert",
+        borderTone: "alert",
+        badge: { primary: "Modelo A", secondary: "AAA-0001" },
+      },
+      {
+        id: "lead-b",
+        name: "Lead Beta",
+        owners: defaultOwners,
+        contactInfo: "00 91111-1111",
+        contactTone: "subtle",
+        statusLabel: "1 dia",
+        statusTone: "alert",
+        borderTone: "alert",
+      },
+      {
+        id: "lead-c",
+        name: "Lead Gamma",
+        owners: defaultOwners,
+        contactInfo: "00 92222-2222",
+        statusLabel: "14 horas",
+        statusTone: "default",
+        badge: { primary: "Modelo A", secondary: "AAA-0001" },
+      },
+    ],
+  },
+  {
+    id: "stage-qualification",
+    title: "Qualificação",
+    amount: "R$ 44.990,00",
+    leadsCount: 2,
+    leads: [
+      {
+        id: "lead-d",
+        name: "Lead Delta",
+        owners: defaultOwners,
+        contactInfo: "00 93333-3333",
+        statusLabel: "4 dias",
+        statusTone: "alert",
+        borderTone: "alert",
+        badge: { primary: "Modelo B", secondary: "BBB-0002" },
+        highlightBars: [{ color: "#FBBF24" }],
+      },
+      {
+        id: "lead-e",
+        name: "Lead Echo",
+        owners: defaultOwners,
+        contactInfo: "00 94444-4444",
+        statusLabel: "1 dia",
+        statusTone: "alert",
+      },
+    ],
+  },
+  {
+    id: "stage-scheduling",
+    title: "Agendados",
+    amount: "R$ 149.980,00",
+    leadsCount: 2,
+    leads: [
+      {
+        id: "lead-f",
+        name: "Lead Foxtrot",
+        owners: [{ name: "João Paulo" }],
+        contactInfo: "00 95555-5555",
+        statusLabel: "2 dias",
+        statusTone: "alert",
+        badge: { primary: "Modelo C", secondary: "CCC-0003" },
+        badgeExtraCount: 2,
+      },
+      {
+        id: "lead-g",
+        name: "Lead Golf",
+        owners: [{ name: "João Paulo" }],
+        contactInfo: "00 96666-6666",
+        statusLabel: "4 horas",
+        badge: { primary: "Modelo D", secondary: "DDD-0004" },
+        badgeExtraCount: 11,
+      },
+    ],
+  },
+  {
+    id: "stage-proposal",
+    title: "Proposta",
+    amount: "R$ 109.990,00",
+    leadsCount: 2,
+    leads: [
+      {
+        id: "lead-h",
+        name: "Lead Hotel",
+        owners: defaultOwners,
+        contactInfo: "00 97777-7777",
+        statusLabel: "45 minutos",
+        badge: { primary: "Modelo E", secondary: "EEE-0005" },
+        highlightBars: [
+          { color: "#166534" },
+          { color: "#6D28D9" },
+        ],
+      },
+      {
+        id: "lead-i",
+        name: "Lead India",
+        owners: defaultOwners,
+        contactInfo: "00 98888-8888",
+        statusLabel: "0 minutos",
+        badge: { primary: "Modelo F", secondary: "FFF-0006" },
+        highlightBars: [
+          { color: "#B91C1C" },
+          { color: "#9CA3AF" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "stage-closed",
+    title: "Encerrados",
+    amount: "R$ 89.990,00",
+    leadsCount: 1,
+    leads: [
+      {
+        id: "lead-j",
+        name: "Lead Juliett",
+        owners: defaultOwners,
+        contactInfo: "00 99999-9999",
+        statusLabel: "2 dias",
+        badge: { primary: "Modelo G", secondary: "GGG-0007" },
+        highlightBars: [{ color: "#6B7280" }],
+      },
+    ],
+  },
+];
